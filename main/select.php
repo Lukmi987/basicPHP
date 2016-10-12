@@ -14,7 +14,8 @@
 </html>
 
 <?php
-include "../config/dbconn.php";
+include "../config/dbconn.php"; // include connection file
+include "../classes/Student.php"; // include student class
 
 if(isset($_POST["submit"])) {
     $studName = $_POST["studName"]; // get data from html form
@@ -62,12 +63,16 @@ if(isset($_POST["submit"])) {
                  * so, you should use the 'dot'(.) operator [in java, they use '+'] to concatenate your value with the string as described below.
                  */
 
+                // this is how we create new object in PHP
+                $tempStudent = new Student($row["studId"], $row["studName"], $row["studIc"], $row["studAge"]);
+
+                // this is how we access methods in objects in PHP
                 echo "
                     <tr>
-                        <td>" . $row["studId"] . "</td>
-                        <td>" . $row["studName"] . "</td>
-                        <td>" . $row["studIc"] . "</td>
-                        <td>" . $row["studAge"] . "</td>
+                        <td>" . $tempStudent->getStudId() . "</td>
+                        <td>" . $tempStudent->getStudName() . "</td>
+                        <td>" . $tempStudent->getStudIc() . "</td>
+                        <td>" . $tempStudent->getStudAge() . "</td>
                     </tr>
                 ";
             }

@@ -15,7 +15,7 @@
 </html>
 
 <?php
-include "../config/dbconn.php";
+include "../config/dbconn.php"; // include connection file
 
 if(isset($_POST["submit"])) {
     $studId = $_POST["studId"];
